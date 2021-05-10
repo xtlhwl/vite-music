@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "style-resources-loader": "^1.4.1",
     "vant": "^3.0.16",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",

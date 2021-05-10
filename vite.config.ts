@@ -25,5 +25,17 @@ export default defineConfig({
     //         rewrite:(path) => path.replace('/api/','/')
     //     }
     // }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${resolve(
+            'src/common/style/variable.less'
+          )}";`
+        },
+        javascriptEnabled: true
+      }
+    }
   }
 })

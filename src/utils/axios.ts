@@ -1,6 +1,6 @@
 import Axios, { AxiosInstance } from 'axios'
 import { Toast } from 'vant'
-const baseURL = 'http://api.github.com'
+const baseURL = 'http://localhost:3000'
 
 const axios: AxiosInstance = Axios.create({
   baseURL,
@@ -33,8 +33,12 @@ axios.interceptors.response.use(
     /**
      * 处理
      */
-    toast.clear()
-    return response
+
+    if (response.status == 200) {
+      toast.clear()
+      return response.data
+    } else {
+    }
   },
   (error) => {
     toast.clear()
