@@ -1,16 +1,16 @@
 import axios from '@/utils/axios';
 
-export function getBanner(data) {
+export function topList(data) {
 	return axios({
-		url: '/banner',
+		url: '/toplist/detail',
 		method: 'get',
 		params: data
 	});
 }
-// 获取精选
-export function getPlaylist(data) {
+
+export function playlistDetail(data) {
 	return axios({
-		url: '/personalized',
+		url: '/playlist/detail',
 		method: 'get',
 		params: data
 	});
