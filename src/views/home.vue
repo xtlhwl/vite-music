@@ -30,26 +30,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+import { defineComponent, onMounted, ref, Ref } from 'vue'
 import { getBanner, getPlaylist } from '@/api/home.js'
 export default defineComponent({
+  name: 'Home',
   create() {},
+  mounted() {
+    console.log('触发1')
+  },
   setup(props) {
     // 轮播图内容获取
     const userInfo: Ref = ref(null)
-    getBanner().then((res: Object) => {
-      if (res.code == 200) {
-        userInfo.value = res.banners
-        console.log(userInfo, res.banners)
-      }
-    })
-
     const songList: Ref = ref({})
-    getPlaylist().then((res: {}) => {
-      if (res.code == 200) {
-        songList.value = res.result
-        console.log(songList)
-      }
+    onMounted(() => {
+      getBanner().then((res: Object) => {
+        if (res.code == 200) {
+          userInfo.value = res.banners
+          console.log(userInfo, res.banners)
+        }
+      })
+
+      getPlaylist().then((res: {}) => {
+        if (res.code == 200) {
+          songList.value = res.result
+          console.log(songList)
+        }
+      })
     })
     return {
       userInfo,

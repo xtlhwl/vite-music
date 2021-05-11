@@ -9,15 +9,18 @@ import { getArtist } from '@/api/singer'
 import ListView from '@/components/listView.vue'
 import { defineComponent, onMounted, ref, Ref } from 'vue'
 export default defineComponent({
+  name: 'Singer',
   components: {
     ListView
   },
   setup() {
     const singers = ref()
-    getArtist().then((res) => {
-      if (res.code == 200) {
-        singers.value = res.list.artists
-      }
+    onMounted(() => {
+      getArtist().then((res) => {
+        if (res.code == 200) {
+          singers.value = res.list.artists
+        }
+      })
     })
 
     return {

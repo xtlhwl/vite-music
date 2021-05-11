@@ -2,9 +2,14 @@
   <div class="main">
     <m-header class="header-all"></m-header>
     <m-tab class="tab-all"></m-tab>
-
     <keep-alive>
-      <router-view class="contetn-all" />
+      <router-view
+        class="contetn-all"
+        v-if="$route.meta.keepAlive"
+        v-slot="{ Component }"
+      >
+        <component :is="Component" />
+      </router-view>
     </keep-alive>
   </div>
 </template>

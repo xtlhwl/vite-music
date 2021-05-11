@@ -5,36 +5,43 @@
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { topList, playlistDetail } from '@/api/rank'
 import TopListView from '@/components/topListView.vue'
 export default defineComponent({
+  name: 'Rank',
   components: {
     TopListView
   },
+  mounted() {
+    console.log('触发222')
+  },
   setup() {
     let toplist = ref()
-    topList().then(function (res: {}) {
-      if (res.code === 200) {
-        let index = 0
-        for (let i = 0; i < res.list.length; i++) {
-          const r = res.list[i]
-          playlistDetail({
-            id: r.id
-          }).then((k) => {
-            if (k.code == 200) {
-              // 歌曲列表
-              r.list = k.playlist.tracks.splice(0, 3)
-              index++
-              if (index == res.list.length) {
-                toplist.value = res.list
+    onMounted(() => {
+      console.log('触发222222')
+      topList().then(function (res: {}) {
+        if (res.code === 200) {
+          let index = 0
+          for (let i = 0; i < res.list.length; i++) {
+            const r = res.list[i]
+            playlistDetail({
+              id: r.id
+            }).then((k) => {
+              if (k.code == 200) {
+                // 歌曲列表
+                r.list = k.playlist.tracks.splice(0, 3)
+                index++
+                if (index == res.list.length) {
+                  toplist.value = res.list
+                }
               }
-            }
-          })
-        }
+            })
+          }
 
-        //   res.list.forEach(function (r, i) {})
-      }
+          //   res.list.forEach(function (r, i) {})
+        }
+      })
     })
     return {
       toplist
