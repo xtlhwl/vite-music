@@ -34,7 +34,7 @@ export default defineComponent({
 <style lang='less' >
 #app {
   //   text-align: center;
-  color: #2c3e50;
+  color: @color-background;
   /* margin-top: 60px; */
   background-color: @color-background;
   height: 100vh;

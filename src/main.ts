@@ -5,5 +5,6 @@ import store from './store/index'
 import Vant from 'vant'
 import { Lazyload } from 'vant'
 import 'vant/lib/index.css'
+import './styles/color.less'
 
 createApp(App).use(router).use(store).use(Vant).use(Lazyload).mount('#app')

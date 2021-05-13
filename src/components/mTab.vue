@@ -30,7 +30,7 @@ export default defineComponent({
   font-size: @font-size-medium-x;
   background-color: @color-background;
   .tab-btn {
-    color: rgba(255, 255, 255, 0.5);
+    color: @color-text-l;
   }
 }
 .tab-item {

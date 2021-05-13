@@ -8,7 +8,7 @@
           autoplay="“5000”"
           :key="index"
         >
-          <img :src="item.imageUrl" alt="" srcset="" />
+          <img :src="item.imageUrl" />
         </van-swipe-item>
       </van-swipe>
     </div>
@@ -85,7 +85,7 @@ export default defineComponent({
     // background-color: #39a9ed;
     img {
       width: 100%;
-      height: 100%;
+      //   height: 100%;
     }
   }
   .home-list-content {
@@ -96,7 +96,7 @@ export default defineComponent({
       line-height: 16vw;
       text-align: center;
       font-size: 14px;
-      color: #ffcd32;
+      color: @color-theme;
     }
     .home-content-ist {
       width: 90%;

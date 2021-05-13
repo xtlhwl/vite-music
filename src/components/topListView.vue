@@ -75,12 +75,12 @@ export default defineComponent({
     align-items: center;
     background-color: @color-highlight-background;
     border-radius: 3px;
-    box-shadow: 0px 0px 1px 2px #333;
+    box-shadow: 0px 0px 1px 2px @color-highlight-background;
     .coverimg {
       width: 26vw;
       height: 26vw;
       border-radius: 3px;
-      box-shadow: -1px -1px 10px 2px;
+      box-shadow: -1px -1px 10px 2px @color-highlight-background;
     }
     // span {
     //   font-size: 14px;

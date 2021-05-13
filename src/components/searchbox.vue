@@ -32,7 +32,7 @@ export default defineComponent({
   .search-context {
     width: 100%;
 
-    background-color: #333;
+    background-color: @color-highlight-background;
     height: 10vw;
     display: flex;
     justify-self: center;
@@ -43,8 +43,8 @@ export default defineComponent({
       width: 80%;
       height: 6vw;
       margin: 0 auto;
-      background-color: #333;
-      border: 1px solid #333;
+      background-color: @color-highlight-background;
+      border: 1px solid @color-highlight-background;
       color: #fff;
     }
   }

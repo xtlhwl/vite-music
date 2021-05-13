@@ -9,6 +9,7 @@
   </div>
 </template>
 <script lang='ts'>
+import less from 'less'
 import { defineComponent, ref } from 'vue'
 export default defineComponent({
   components: {},
@@ -16,6 +17,10 @@ export default defineComponent({
     let switchModel = ref(true)
     const switchFun = () => {
       switchModel.value = !switchModel.value
+      less.modifyVars({
+        '@color-background': '#eaecef'
+      })
+      console.log()
     }
     return {
       switchModel,

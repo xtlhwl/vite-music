@@ -19,6 +19,23 @@
             </div>
           </div>
         </div>
+        <div class="bottom-btn">
+          <div class="like-btn">
+            <img src="@/assets/images/like.png" />
+          </div>
+          <div class="last-btn">
+            <img src="@/assets/images/last.png" />
+          </div>
+          <div class="play_stop-btn">
+            <img src="@/assets/images/play.png" />
+          </div>
+          <div class="next-btn">
+            <img src="@/assets/images/next.png" />
+          </div>
+          <div class="song-lists">
+            <img src="@/assets/images/songLists.png" />
+          </div>
+        </div>
       </div>
     </transition>
     <transition name="mini">
@@ -39,6 +56,7 @@
         </div>
       </div>
     </transition>
+    <audio ref="audio" src=""></audio>
   </div>
 </template>
 <script lang='ts'>
@@ -75,7 +93,7 @@ export default defineComponent({
 </script>
 <style lang='less' scoped >
 .player {
-  background-color: #333333;
+  background-color: @color-play-background;
   .normal-player {
     position: fixed;
     left: 0;
@@ -134,6 +152,28 @@ export default defineComponent({
         }
       }
     }
+    .bottom-btn {
+      width: 100%;
+      position: absolute;
+      bottom: 50px;
+      height: 8vh;
+      display: flex;
+      justify-content: space-around;
+      img {
+        width: 12vw;
+        height: 12vw;
+      }
+      .like-btn {
+        img {
+          margin-top: 3px;
+          width: 10vw;
+          height: 10vw;
+        }
+      }
+      //   .song-lists {
+      //     position: absolute;
+      //   }
+    }
     .header-top {
       //   height: 5vh;
       display: flex;
@@ -188,7 +228,7 @@ export default defineComponent({
       width: 10vw;
       height: 10vw;
       position: absolute;
-      right: 3vw;
+      right: 2vw;
       img {
         width: 100%;
         height: 100%;

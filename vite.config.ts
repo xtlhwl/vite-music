@@ -31,7 +31,7 @@ export default defineConfig({
       less: {
         modifyVars: {
           hack: `true; @import (reference) "${resolve(
-            'src/common/style/variable.less'
+            'src/common/style/variableDark.less'
           )}";`
         },
         javascriptEnabled: true
