@@ -32,4 +32,7 @@ export default defineComponent({
 <style lang='less' scoped >
 .singer {
 }
+.singer::-webkit-scrollbar {
+  display: none;
+}
 </style>

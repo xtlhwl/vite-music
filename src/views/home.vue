@@ -129,4 +129,7 @@ export default defineComponent({
     }
   }
 }
+.home ::-webkit-scrollbar {
+  display: none;
+}
 </style>

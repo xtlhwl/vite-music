@@ -52,4 +52,7 @@ export default defineComponent({
 <style lang='less' scoped >
 .rank {
 }
+.rank::-webkit-scrollbar {
+  display: none;
+}
 </style>

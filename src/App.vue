@@ -11,6 +11,7 @@
         <component :is="Component" />
       </router-view>
     </keep-alive>
+    <player></player>
   </div>
 </template>
 
@@ -18,12 +19,13 @@
 import { defineComponent } from 'vue'
 import MHeader from '@/components/mHeader.vue'
 import MTab from '@/components/mTab.vue'
-
+import Player from '@/components/player.vue'
 export default defineComponent({
   name: 'App',
   components: {
     MHeader,
-    MTab
+    MTab,
+    Player
   },
   setup(props) {}
 })
@@ -72,6 +74,7 @@ export default defineComponent({
   .contetn-all {
     flex-grow: 1;
     overflow-y: auto;
+    height: 100%;
   }
 }
 

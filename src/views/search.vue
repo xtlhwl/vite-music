@@ -81,4 +81,7 @@ export default defineComponent({
     }
   }
 }
+.search::-webkit-scrollbar {
+  display: none;
+}
 </style>
