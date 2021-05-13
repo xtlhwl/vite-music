@@ -14,12 +14,12 @@ axios.interceptors.request.use(
     /**
      * 处理
      */
-    toast = Toast.loading({
-      message: '加载中...',
-      forbidClick: true,
-      loadingType: 'spinner',
-      duration: 0
-    })
+    // toast = Toast.loading({
+    //   message: '加载中...',
+    //   forbidClick: true,
+    //   loadingType: 'spinner',
+    //   duration: 0
+    // })
 
     return config
   },
@@ -35,7 +35,7 @@ axios.interceptors.response.use(
      */
 
     if (response.status == 200) {
-      toast.clear()
+      //   toast.clear()
       return response.data
     } else {
     }

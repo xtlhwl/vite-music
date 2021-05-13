@@ -1,18 +1,52 @@
 /** Created by preference on 2021/05/11 AuthorName:Seven Email:xtlhcy@gmail.com **/
 <template>
   <div class="searchbox">
-    <i class="icon-search"></i>
-    <input type="text" />
-    <i class="icon-dismiss"></i>
+    <div class="search-context">
+      <input type="text" placeholder="搜索歌曲、歌手" v-model="searchKey.value" />
+    </div>
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive, watchEffect, watch } from 'vue'
 export default defineComponent({
-  components: {}
+  components: {},
+  setup(props, { attrs, slots, emit }) {
+    let searchKey = reactive({
+      value: ''
+    })
+    watch(searchKey, (newValue, oldValue) => {
+      console.log(newValue, oldValue)
+      emit('query', searchKey.value)
+    })
+    return {
+      searchKey
+    }
+  }
 })
 </script>
 <style lang='less' scoped >
 .searchbox {
+  display: flex;
+  justify-content: center;
+
+  .search-context {
+    width: 100%;
+
+    background-color: #333;
+    height: 10vw;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-top: 1vh;
+    border-radius: 6px;
+    input {
+      width: 80%;
+      height: 6vw;
+      margin: 0 auto;
+      background-color: #333;
+      border: 1px solid #333;
+      color: #fff;
+    }
+  }
 }
 </style>
