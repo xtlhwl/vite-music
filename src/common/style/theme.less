@@ -1,8 +1,27 @@
-@import url('./variableDark.less');
-@import url('./variableLight.less');
-.theme1(
-    .theme1()
-);
-.theme2(
-    .theme2()
-);
+.theme(@color-background:#222,@color-background-d:#1c1f26,@color-highlight-background:#333,
+@color-dialog-background:#666,@color-theme:#ffcd32,@color-theme-d:#92732b,@color-sub-theme:#d93f30,
+@color-text:#fff,  @color-text-d: #5d6166,
+@color-text-l: #888b90,
+@color-text-ll: #cecfd0,
+@color-play-background: #333
+) {
+  @color-background: @color-background;
+  @color-background-d: @color-background-d;
+  @color-highlight-background: @color-highlight-background;
+  @color-dialog-background: @color-dialog-background;
+  @color-theme: @color-theme;
+  @color-theme-d: @color-theme-d;
+  @color-sub-theme: @color-sub-theme;
+  @color-text: @color-text;
+  @color-text-d: @color-text-d;
+  @color-text-l: @color-text-l;
+  @color-text-ll: @color-text-ll;
+  @color-play-background: @color-play-background; //字体定义规范
+
+  @font-size-small-s: 10px;
+  @font-size-small: 12px;
+  @font-size-medium: 14px;
+  @font-size-medium-x: 16px;
+  @font-size-large: 18px;
+  @font-size-large-x: 22px;
+}

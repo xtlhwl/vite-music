@@ -1,6 +1,6 @@
 /** Created by preference on 2021/05/13 AuthorName:Seven Email:xtlhcy@gmail.com **/
 <template>
-  <div class="player">
+  <div class="player" v-if="playList.length">
     <transition name="normal" v-show="showNormal">
       <div class="normal-player">
         <div class="background">
@@ -26,8 +26,9 @@
           <div class="last-btn">
             <img src="@/assets/images/last.png" />
           </div>
-          <div class="play_stop-btn">
-            <img src="@/assets/images/play.png" />
+          <div class="play_stop-btn" @click="playSong">
+            <img v-show="playing" src="@/assets/images/stop.png" />
+            <img v-show="!playing" src="@/assets/images/play.png" />
           </div>
           <div class="next-btn">
             <img src="@/assets/images/next.png" />
@@ -56,18 +57,19 @@
         </div>
       </div>
     </transition>
-    <audio ref="audio" src=""></audio>
+    <audio ref="audio" :src="songurl"></audio>
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref } from 'vue'
-import { topDetail } from '@/api/player.js'
+import { defineComponent, onMounted, ref } from 'vue'
+import { topDetail, songUrl } from '@/api/player.js'
 export default defineComponent({
   components: {},
   setup() {
     let songDetail = ref({})
     let picUrl = ref('')
     let singer = ref('')
+    let playList = ref([])
     const showNormal = ref(true)
     topDetail().then((res) => {
       if (res.code === 200) {
@@ -76,17 +78,44 @@ export default defineComponent({
         picUrl.value = res.songs[0].al.picUrl
         singer.value = res.songs[0].ar[0].name
         console.log(songDetail, picUrl)
+        getSongList()
       }
     })
+    //缩放
     const backPut = () => {
       showNormal.value = !showNormal.value
+    }
+    // 获取歌曲链接
+    let songurl = ref('')
+    const getSongList = () => {
+      songUrl().then((res) => {
+        if (res.code == 200) {
+          songurl.value = res.data[0].url
+        }
+      })
+    }
+    // 播放
+    let audio = ref(null)
+    let playing = ref(false)
+    const playSong = () => {
+      playing.value = !playing.value
+      if (playing.value) {
+        audio.value.play()
+      } else {
+        audio.value.pause()
+      }
     }
     return {
       songDetail,
       singer,
       picUrl,
       backPut,
-      showNormal
+      showNormal,
+      songurl,
+      audio,
+      playSong,
+      playing,
+      playList
     }
   }
 })
@@ -187,7 +216,7 @@ export default defineComponent({
       .header-top-songs {
         font-size: @font-size-large-x;
         margin-top: 1.5vh;
-        color: @color-theme;
+        color: @color-text-ll;
       }
     }
   }
@@ -239,10 +268,10 @@ export default defineComponent({
   &.normal-enter-active,
   &.normal-leave-active {
     transition: all 0.4s;
-    // .header-top,
-    // .bottom {
-    transition: all 0.4s cubic-bezier(0.86, 0.18, 0.82, 1.32);
-    // }
+    .header-top,
+    .bottom-btn {
+      transition: all 0.4s cubic-bezier(0.86, 0.18, 0.82, 1.32);
+    }
   }
   &.normal-enter,
   &.normal-leave-to {

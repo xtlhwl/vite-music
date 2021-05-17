@@ -7,3 +7,11 @@ export function topDetail(data) {
 		params: data
 	});
 }
+
+export function songUrl(data) {
+	return axios({
+		url: '/song/url?id=346089',
+		method: 'get',
+		params: data
+	});
+}
