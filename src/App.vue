@@ -2,15 +2,17 @@
   <div class="main">
     <m-header class="header-all"></m-header>
     <m-tab class="tab-all"></m-tab>
-    <keep-alive>
-      <router-view
-        class="contetn-all"
-        v-if="$route.meta.keepAlive"
-        v-slot="{ Component }"
-      >
+
+    <router-view
+      class="contetn-all"
+      v-if="$route.meta.keepAlive"
+      v-slot="{ Component }"
+    >
+      <keep-alive>
         <component :is="Component" />
-      </router-view>
-    </keep-alive>
+      </keep-alive>
+    </router-view>
+
     <player></player>
   </div>
 </template>
